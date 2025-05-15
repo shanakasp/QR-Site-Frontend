@@ -73,11 +73,19 @@
       }
 
       .card {
+        background-color: white;
+        border-radius: 8px;
+        margin: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .card2 {
+        border-radius: 8px;
         margin: 15px;
 
         overflow: hidden;
       }
-
       .card-header {
         display: flex;
         justify-content: space-between;
@@ -96,6 +104,7 @@
       }
 
       .card-content {
+        padding: 15px;
       }
 
       .user-info {
@@ -106,6 +115,10 @@
 
       .user-details {
         flex: 1;
+      }
+
+      .price {
+        color: #2f4399;
       }
 
       .user-photo {
@@ -151,6 +164,7 @@
         height: 260px;
         display: block;
         margin: auto;
+        cursor: pointer; /* Add cursor pointer to indicate it's clickable */
       }
 
       .qr-button {
@@ -160,6 +174,7 @@
         justify-content: center;
         margin: 15px auto;
         font-size: 1rem;
+        cursor: pointer; /* Add cursor pointer to indicate it's clickable */
       }
 
       .qr-button span {
@@ -196,9 +211,10 @@
       }
 
       .route-card {
-        background-color: #f5f5f5;
+        background-color: #e3e3e3;
         padding: 15px;
         margin-bottom: 10px;
+        border-radius: 5px;
       }
 
       .route-label {
@@ -215,6 +231,7 @@
       .valid-card {
         background-color: #4dd0a7;
         color: white;
+        border-radius: 5px;
         padding: 15px;
       }
 
@@ -225,9 +242,14 @@
         margin-top: 20px;
       }
 
+      .detail-row-2 {
+        padding: 10px;
+      }
       .detail-row {
-        background-color: #f5f5f5;
+        background-color: #e3e3e3;
         padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
       }
 
       .price-row {
@@ -260,24 +282,51 @@
         width: 80px;
       }
 
-      .amount {
-        color: #2f4399;
-      }
-
-      .section2 {
-        background-color: #fff;
-      }
-
-      .bottom-images {
-        padding-left: 20px;
-      }
       .consortium-info {
-        background-color: #fff;
         color: #000;
         text-align: left;
         padding: 5px;
         font-weight: bold;
         margin-top: 10px;
+      }
+
+      /* QR Code Modal Styles */
+      .qr-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .qr-modal-content {
+        text-align: center;
+      }
+
+      .qr-modal img {
+        max-width: 80%;
+        max-height: 80vh;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: #333;
+        cursor: pointer;
+        background: none;
+        border: none;
+      }
+
+      .bottom-images {
+        padding-left: 20px;
       }
     </style>
   </head>
@@ -332,9 +381,11 @@
       <div class="card-content">
         <div class="qr-section">
           <div class="qr-code">
-            <img src="./images/qrimg.png" alt="QR Code" />
+            <img src="./images/qrimg.png" alt="QR Code" id="qrCodeImage" />
           </div>
-          <div class="qr-button">&#8853; <span>Apri QR Code</span></div>
+          <div class="qr-button" id="openQrButton">
+            &#8853; <span>Apri QR Code</span>
+          </div>
         </div>
         <div class="time-section">
           <div class="time">&#9200; <span>16:11:54</span></div>
@@ -343,61 +394,69 @@
       </div>
     </div>
 
-    <div class="section2">
-      <!-- Pass Type Section -->
-      <div class="pass-type">ABB.STU- INT. UNICOCAMPANIA - per NAPOLI</div>
+    <!-- Pass Type Section -->
+    <div class="pass-type">ABB.STU- INT. UNICOCAMPANIA - per NAPOLI</div>
 
-      <!-- Region Info -->
-      <div class="card">
-        <div class="card-content">
-          <div>ABB INTEGRATO STUDENTI REGIONE CAMPANIA</div>
+    <!-- Region Info -->
+    <div class="card2">
+      <div class="card-content">
+        <div>ABB INTEGRATO STUDENTI REGIONE CAMPANIA</div>
 
-          <div class="ticket-details">
-            <div class="route-card">
-              <div class="route-label">Tratta:</div>
-              <div class="route-value">Da CASERTA a FISCIANO</div>
-            </div>
-
-            <div class="valid-card">
-              <div class="route-label">Valido fino al:</div>
-              <div class="route-value">31/07/2024</div>
-            </div>
-
-            <div class="detail-row">
-              <div>EMISSIONE TPLW</div>
-            </div>
-
-            <div class="detail-row">
-              <div>Emesso il: 05/09/2023 16:25</div>
-            </div>
-
-            <div class="price-row">
-              <div>Prezzo</div>
-              <div class="amount">€0,00</div>
-            </div>
-
-            <div class="bottom-images">
-              <div class="logo-section">
-                <img
-                  src="./images/unico_logo.png"
-                  alt="UNICO Campania Logo"
-                  class="unico-logo"
-                />
-                <div class="ticket-id">#WJB6Z69Y6J<br />#2000W/1154187</div>
-              </div>
-
-              <div class="logo-section">
-                <img
-                  src="./images/regione_campania_logo.jpg"
-                  alt="Regione Campania Logo"
-                  class="region-logo"
-                />
-              </div>
-            </div>
-
-            <div class="consortium-info">CONSORZIO UNICOCAMPANIA</div>
+        <div class="ticket-details">
+          <div class="route-card">
+            <div class="route-label">Tratta:</div>
+            <div class="route-value">Da CASERTA a FISCIANO</div>
           </div>
+
+          <div class="valid-card">
+            <div class="route-label">Valido fino al:</div>
+            <div class="route-value">31/07/2024</div>
+          </div>
+
+          <div class="detail-row-2">
+            <div>EMISSIONE TPLW</div>
+          </div>
+
+          <div class="detail-row">
+            <div>Emesso il: 05/09/2023 16:25</div>
+          </div>
+
+          <div class="price-row">
+            <div>Prezzo</div>
+            <div class="price">€0,00</div>
+          </div>
+
+          <div class="bottom-images">
+            <div class="logo-section">
+              <img
+                src="./images/unico_logo.png"
+                alt="UNICO Campania Logo"
+                class="unico-logo"
+              />
+              <div class="ticket-id">#WJB6Z69Y6J<br />#2000W/1154187</div>
+            </div>
+
+            <div class="logo-section">
+              <img
+                src="./images/regione_campania_logo.jpg"
+                alt="Regione Campania Logo"
+                class="region-logo"
+              />
+            </div>
+          </div>
+
+          <div class="consortium-info">CONSORZIO UNICOCAMPANIA</div>
         </div>
+      </div>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div class="qr-modal" id="qrModal">
+      <button class="close-modal" id="closeModal">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="qr-modal-content">
+        <img src="./images/qrimg.png" alt="QR Code" id="modalQrImage" />
       </div>
     </div>
 
@@ -405,6 +464,38 @@
       // JavaScript to handle expanding/collapsing cards
       document.addEventListener("DOMContentLoaded", function () {
         const cardHeaders = document.querySelectorAll(".card-header");
+        const qrCodeImage = document.getElementById("qrCodeImage");
+        const qrButton = document.getElementById("openQrButton");
+        const qrModal = document.getElementById("qrModal");
+        const closeModal = document.getElementById("closeModal");
+
+        // QR Code Modal functionality
+        function openQrModal() {
+          qrModal.style.display = "flex";
+        }
+
+        function closeQrModal() {
+          qrModal.style.display = "none";
+        }
+
+        // Add event listeners for QR code functionality
+        qrCodeImage.addEventListener("click", openQrModal);
+        qrButton.addEventListener("click", openQrModal);
+        closeModal.addEventListener("click", closeQrModal);
+
+        // Close modal when clicking outside the content
+        qrModal.addEventListener("click", function (e) {
+          if (e.target === qrModal) {
+            closeQrModal();
+          }
+        });
+
+        // Close modal when pressing Escape key
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            closeQrModal();
+          }
+        });
 
         cardHeaders.forEach((header) => {
           header.addEventListener("click", function () {
