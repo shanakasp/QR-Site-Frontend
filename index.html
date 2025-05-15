@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Transport Pass - UnicoCampania</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <style>
       * {
         margin: 0;
@@ -24,23 +28,39 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 60px;
       }
 
       .header h1 {
         font-size: 1.4rem;
         font-weight: normal;
+        text-align: center;
+        flex: 1;
+        margin: 0;
       }
 
-      .header-icons {
+      .left-icons {
         display: flex;
         align-items: center;
+        gap: 20px;
+        width: 80px;
       }
 
-      .header-icons a {
+      .right-icons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 80px;
+      }
+
+      .header a {
         color: white;
         text-decoration: none;
-        margin-left: 20px;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+      }
+
+      .header i {
+        font-size: 1.4rem;
       }
 
       .active-title {
@@ -127,11 +147,6 @@
       .qr-section {
         text-align: center;
         padding: 20px 0;
-      }
-
-      .qr-code {
-        margin: 0 auto;
-        text-align: center;
       }
 
       .qr-code img {
@@ -261,26 +276,13 @@
   <body>
     <!-- Header Section -->
     <div class="header">
-      <a href="#" class="back-button">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/93/93634.png"
-          alt="Back"
-        />
-      </a>
-      <a href="#" class="home-button">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
-          alt="Home"
-        />
-      </a>
+      <div class="left-icons">
+        <a href="#" class="back-button"><i class="fas fa-chevron-left"></i></a>
+        <a href="#" class="home-button"><i class="fas fa-home"></i></a>
+      </div>
       <h1>I Miei Titoli</h1>
-      <div class="header-icons">
-        <a href="#" class="profile-icon">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-            alt="Profile"
-          />
-        </a>
+      <div class="right-icons">
+        <a href="#" class="profile-icon"><i class="fas fa-user-circle"></i></a>
       </div>
     </div>
 
