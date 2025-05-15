@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Transport Pass - UnicoCampania</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        color: #333;
+      }
+
+      .header {
+        background-color: #2f4399;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header h1 {
+        font-size: 1.4rem;
+        font-weight: normal;
+      }
+
+      .header-icons {
+        display: flex;
+        align-items: center;
+      }
+
+      .header-icons a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 1.5rem;
+      }
+
+      .active-title {
+        background-color: #4dd0a7;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: bold;
+      }
+
+      .card {
+        background-color: white;
+        border-radius: 8px;
+        margin: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        color: #2f4399;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      .card-header .expand-icon {
+        color: #7ba23f;
+        font-size: 1.5rem;
+        transform: rotate(90deg);
+      }
+
+      .card-content {
+        padding: 15px;
+      }
+
+      .user-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .user-details {
+        flex: 1;
+      }
+
+      .user-photo {
+        width: 120px;
+        height: 120px;
+        overflow: hidden;
+        border-radius: 4px;
+      }
+
+      .user-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .user-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .user-id,
+      .user-expiry {
+        margin-bottom: 15px;
+      }
+
+      .label {
+        font-weight: normal;
+      }
+
+      .value {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .qr-section {
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      .qr-code {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+      }
+
+      .qr-button {
+        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 15px auto;
+        font-size: 1rem;
+      }
+
+      .qr-button span {
+        margin-left: 10px;
+      }
+
+      .time-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px 15px;
+      }
+
+      .time-section .time {
+        display: flex;
+        align-items: center;
+      }
+
+      .time-section .time span {
+        margin-left: 10px;
+      }
+
+      .ticket-number {
+        color: #666;
+      }
+
+      .pass-type {
+        background-color: #2f4399;
+        color: white;
+        padding: 15px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .route-card {
+        background-color: #f5f5f5;
+        padding: 15px;
+        margin-bottom: 10px;
+      }
+
+      .route-label {
+        color: #333;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+      }
+
+      .route-value {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      .valid-card {
+        background-color: #4dd0a7;
+        color: white;
+        padding: 15px;
+      }
+
+      .ticket-details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .detail-row {
+        background-color: #f5f5f5;
+        padding: 15px;
+      }
+
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-top: 10px;
+      }
+
+      .ticket-id {
+        font-weight: bold;
+        text-align: right;
+        margin-top: 10px;
+      }
+
+      .logo-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .unico-logo {
+        width: 120px;
+      }
+
+      .region-logo {
+        width: 80px;
+      }
+
+      .consortium-info {
+        background-color: #fff;
+        color: #000;
+        text-align: center;
+        padding: 15px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <div class="header">
+      <a href="#" class="back-button">&#10094;</a>
+      <a href="#" class="home-button">&#8962;</a>
+      <h1>I Miei Titoli</h1>
+      <div class="header-icons">
+        <a href="#" class="profile-icon">&#9673;</a>
+      </div>
+    </div>
+
+    <!-- Active Title Section -->
+    <div class="active-title">TITOLO ATTIVO</div>
+
+    <!-- First Card - User Information -->
+    <div class="card">
+      <div class="card-header">
+        Informazioni tessera
+        <span class="expand-icon">&#8250;</span>
+      </div>
+      <div class="card-content">
+        <div class="user-info">
+          <div class="user-details">
+            <div class="user-name">GIANMARCO RIVIELLO</div>
+            <div class="user-id">
+              <span class="label">Tesserino n.</span><br />
+              <span class="value">2000279416</span>
+            </div>
+            <div class="user-expiry">
+              <span class="label">Scadenza:</span><br />
+              <span class="value">31/07/2024</span>
+            </div>
+          </div>
+          <div class="user-photo">
+            <img src="./images/user.png" alt="User Photo" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Card - QR Code -->
+    <div class="card">
+      <div class="card-header">
+        Controllo e validazione
+        <span class="expand-icon">&#8250;</span>
+      </div>
+      <div class="card-content">
+        <div class="qr-section">
+          <div class="qr-code">
+            <img src="./images/qrimg.png" alt="QR Code" />
+          </div>
+          <div class="qr-button">&#8853; <span>Apri QR Code</span></div>
+        </div>
+        <div class="time-section">
+          <div class="time">&#9200; <span>16:11:54</span></div>
+          <div class="ticket-number">910</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pass Type Section -->
+    <div class="pass-type">ABB.STU- INT. UNICOCAMPANIA - per NAPOLI</div>
+
+    <!-- Region Info -->
+    <div class="card">
+      <div class="card-content">
+        <div>ABB INTEGRATO STUDENTI REGIONE CAMPANIA</div>
+
+        <div class="ticket-details">
+          <div class="route-card">
+            <div class="route-label">Tratta:</div>
+            <div class="route-value">Da CASERTA a FISCIANO</div>
+          </div>
+
+          <div class="valid-card">
+            <div class="route-label">Valido fino al:</div>
+            <div class="route-value">31/07/2024</div>
+          </div>
+
+          <div class="detail-row">
+            <div>EMISSIONE TPLW</div>
+          </div>
+
+          <div class="detail-row">
+            <div>Emesso il: 05/09/2023 16:25</div>
+          </div>
+
+          <div class="price-row">
+            <div>Prezzo</div>
+            <div>€0,00</div>
+          </div>
+
+          <div class="logo-section">
+            <img
+              src="./images/unico_logo.png"
+              alt="UNICO Campania Logo"
+              class="unico-logo"
+            />
+            <div class="ticket-id">#WJB6Z69Y6J<br />#2000W/1154187</div>
+          </div>
+
+          <div class="logo-section">
+            <img
+              src="./images/regione_campania_logo.jpg"
+              alt="Regione Campania Logo"
+              class="region-logo"
+            />
+          </div>
+
+          <div class="consortium-info">CONSORZIO UNICOCAMPANIA</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript to handle expanding/collapsing cards
+      document.addEventListener("DOMContentLoaded", function () {
+        const cardHeaders = document.querySelectorAll(".card-header");
+
+        cardHeaders.forEach((header) => {
+          header.addEventListener("click", function () {
+            const content = this.nextElementSibling;
+            const expandIcon = this.querySelector(".expand-icon");
+
+            if (content.style.display === "none") {
+              content.style.display = "block";
+              expandIcon.style.transform = "rotate(90deg)";
+            } else {
+              content.style.display = "none";
+              expandIcon.style.transform = "rotate(0deg)";
+            }
+          });
+        });
+
+        // Update time every second
+        function updateTime() {
+          const now = new Date();
+          const hours = now.getHours().toString().padStart(2, "0");
+          const minutes = now.getMinutes().toString().padStart(2, "0");
+          const seconds = now.getSeconds().toString().padStart(2, "0");
+
+          const timeElement = document.querySelector(".time span");
+          if (timeElement) {
+            timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+          }
+
+          setTimeout(updateTime, 1000);
+        }
+
+        updateTime();
+      });
+    </script>
+  </body>
+</html>
