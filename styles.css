@@ -280,6 +280,7 @@ body {
 .ticket-id {
   font-weight: bold;
   text-align: right;
+  font-size: larger;
   margin-top: 10px;
 }
 
@@ -291,7 +292,7 @@ body {
 }
 
 .unico-logo {
-  width: 120px;
+  width: 140px;
 }
 
 .region-logo {
@@ -305,7 +306,7 @@ body {
   text-align: left;
   padding: 5px;
   font-weight: bold;
-  margin-top: 15px;
+  margin-top: 25px;
   margin-left: -15px;
 }
 
