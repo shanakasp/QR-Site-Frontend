@@ -371,16 +371,22 @@ body {
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 
-.icon-left,
 .icon-home {
   width: 30px;
   height: 30px;
   cursor: pointer;
+}
+
+.icon-left {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-right: -5px;
 }
 
 .icon-clock {
