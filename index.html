@@ -170,11 +170,13 @@
     <!-- QR Code Modal -->
     <div class="qr-modal" id="qrModal">
       <button class="close-modal" id="closeModal">
-        <i class="fas fa-times"></i>
+        <div class="qr-modal-wrapper">
+          <!-- <i class="fas fa-times"></i> -->
+          <div class="qr-modal-content">
+            <img src="./images/qrimg.png" alt="QR Code" id="modalQrImage" />
+          </div>
+        </div>
       </button>
-      <div class="qr-modal-content">
-        <img src="./images/qrimg.png" alt="QR Code" id="modalQrImage" />
-      </div>
     </div>
 
     <script src="index.js"></script>
